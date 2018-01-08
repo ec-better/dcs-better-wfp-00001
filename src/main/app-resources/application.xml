@@ -4,16 +4,16 @@
     <jobTemplate id="notebook">
       <streamingExecutable>/application/notebook/run</streamingExecutable>
       <defaultParameters>
-        <parameter id="ts" title="Training set size" abstract="Size of the training set (in pixels)" maxOccurs="1" scope="runtime" type="LiteralData">1000</parameter>
-        <parameter id="nc" title="Number of classes" abstract="Number of modes, which will be used to generate class membership" maxOccurs="1" scope="runtime" type="LiteralData">5</parameter>
-        <parameter id="maxit" title="Maximum number of iterations" abstract="Maximum number of iterations for the learning step" maxOccurs="1" scope="runtime" type="LiteralData">1000</parameter>
+        <parameter id="longitude" title="Longitude" abstract="Longitude in degrees" maxOccurs="1" scope="runtime" type="LiteralData">68.08586</parameter>
+        <parameter id="latitude" title="latitude" abstract="Latitude in degrees" maxOccurs="1" scope="runtime" type="LiteralData">37.20143</parameter>
+        <parameter id="extent" title="Extent" abstract="Extent in degress" maxOccurs="1" scope="runtime" type="LiteralData">0.015</parameter>
      </defaultParameters>
      <defaultJobconf>
         <property id="mapred.task.timeout">9900000000000</property>
       </defaultJobconf>
     </jobTemplate>
   </jobTemplates>
-  <workflow id="dcs-notebook" title="Notebook driven application" abstract="Notebook driven application">
+  <workflow id="dcs-better-wfp-00001" title="WFP data stream 00001" abstract="WFP data stream 00001 - Sentinel-2 SAVI">
     <workflowVersion>1.0</workflowVersion>
     <node id="notebook">
       <job id="notebook"/>

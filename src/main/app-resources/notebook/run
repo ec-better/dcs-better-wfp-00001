@@ -36,20 +36,21 @@ def clean_exit(exit_code):
  
     ciop.log(log_level, msg[exit_code])  
     
-def parametrize(identifier):
+def parametrize(identifier, reference):
 
     global nb
         
-    #ts = ciop.getparam('ts')
-    #nc = ciop.getparam('nc')
-    #maxit = ciop.getparam('maxit')
+    lon = ciop.getparam('longitude')
+    lat = ciop.getparam('latitude')
+    extent = ciop.getparam('extent')
     
     nb.cells[1]['source'] = 'data_path = "%s"' % ( tmp_dir ) 
     nb.cells[2]['source'] = 's2_identifier = "%s"' % ( identifier ) 
-    #nb.cells[1]['source'] = 'ts = %s' % (ts)  
-    #nb.cells[3]['source'] = 'nc = %s' % (nc)
-    #nb.cells[5]['source'] = 'maxit = %s' % (maxit) 
-    
+    nb.cells[3]['source'] = 'lon = %s' % (lon)  
+    nb.cells[4]['source'] = 'lat = %s' % (lat)
+    nb.cells[5]['source'] = 'extent = %s' % (extent) 
+    nb.cells[6]['source'] = 's2_reference = "%s"' % (reference)  
+  
 def reproducibility(path, reference):
     
     ciop.log('INFO', 'Create stage-in notebook for reproducibility')
@@ -98,7 +99,7 @@ def stage_in(reference):
     local_files.append(retrieved)    
   
 
-def execute(identifier, nb_source, nb_target, kernel = 'python2'):
+def execute(identifier, reference, nb_source, nb_target, kernel = 'python2'):
     
     global nb
    
@@ -106,7 +107,7 @@ def execute(identifier, nb_source, nb_target, kernel = 'python2'):
     
     ciop.log('INFO', 'Execute notebook')
     
-    parametrize(identifier)
+    parametrize(identifier, reference)
     
     # execute the notebook
     ep = ExecutePreprocessor(timeout=None, kernel_name=kernel)
@@ -170,7 +171,7 @@ def main():
       # execute the notebook
       nb_source = os.path.join('/application', 'notebook', 'libexec', 'input.ipynb')
       nb_target = os.path.join(runtime, 'result.ipynb')  
-      execute(identifiers[-1], nb_source, nb_target, 'python2')  
+      execute(identifiers[-1], reference, nb_source, nb_target, 'python2')  
     
       # publish
       publish(runtime)   
