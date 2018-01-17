@@ -267,7 +267,7 @@ sphinx=1.6.3=py27hf9b1778_0
 sphinx_bootstrap_theme=0.5.3=py27_0
 sphinx_rtd_theme=0.2.4=py27_0
 sphinxcontrib=1.0=py27h1512b58_1
-sphinxcontrib-plantuml=0.8.2=py27_0
+sphinxcontrib-plantuml=0.8.2=py27hbff4568_0
 sphinxcontrib-websupport=1.0.1=py27hf906f22_1
 sqlite=3.13.0=0
 ssl_match_hostname=3.4.0.2=py27_1
