@@ -2,5 +2,6 @@ runc
 *.tif
 target
 *.pyc
-input-checkpoint.ipynb
-.ipynb_checkpoints
+input-checkpoint.ipynb*
+*.ipynb_checkpoints
+*.properties

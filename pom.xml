@@ -11,7 +11,7 @@
     <version>2.0.0</version>
   </parent>
   <description>savi data stream</description>
-  <version>0.1</version>
+  <version>1.1</version>
   <properties>
     <summary>savi data stream</summary>
     <description>savi data stream</description>
@@ -28,10 +28,10 @@
     <profile>
       <id>package-app</id>
       <activation>
-         <property>
-           <name>env</name>
-           <value>ci</value>
-         </property>
+        <property>
+          <name>env</name>
+          <value>ci</value>
+        </property>
       </activation>
       <build>
         <plugins>
@@ -50,7 +50,12 @@
                     <require>fftw</require>
                     <require>miniconda</require>
                     <require>OTB</require>
+                    <require>java-1.8.0-openjdk-devel</require>
+                    <require>snap</require>
                   </requires>
+                  <postinstallScriptlet combine.self="override">
+                    <script>conda update conda -y &amp;&amp; conda install -y --file /application/dependencies/python/packages.list</script>
+                  </postinstallScriptlet>
                 </configuration>
               </execution>
             </executions>
