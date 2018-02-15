@@ -9,7 +9,7 @@
         <parameter id="extent" title="Extent" abstract="Extent in degress" maxOccurs="1" scope="runtime" type="LiteralData">0.015</parameter>
      </defaultParameters>
      <defaultJobconf>
-        <property id="mapred.task.timeout">9900000000000</property>
+        <property id="mapred.task.timeout">604800000</property>
       </defaultJobconf>
     </jobTemplate>
   </jobTemplates>
